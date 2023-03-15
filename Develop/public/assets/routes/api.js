@@ -1,7 +1,12 @@
 const express = require("express");
 const router = express.Router();
+const fs = require("fs");
 
-//Need to reference the json file either here or on server.js
+//Importing the db.json object
+const db = require("../../../db/db.json");
+
+//Adding middleware for body parsing
+router.use(express.json());
 
 //posting, deleting put etc are server calls, you are talking to the server
 // Get route returns info from the json file then we parse it
@@ -9,17 +14,33 @@ const router = express.Router();
 /*Using router.route to call the api/notes incase you want to reference a specific note*/
 router.get("/notes", (req, res) => {
     console.log(`GET NOTES`);
+    console.log(db);
+    res.send(db);
     //We could use res.status(200).json() to add json info
-})
+});
 
 router.post("/notes", (req, res) => {
     console.log(`POSTED NOTES`);
-})
+    if(!req.body.title && !req.body.text){
+        return res.status(400).send("Cannot Find Notes");
+    } 
+
+    console.log("THE BODY INFO: ", req.body);
+
+    const noteInfo = {
+        title: req.body.title,
+        text: req.body.text
+    }
+
+    db.push(noteInfo);
+    res.send(noteInfo);
+});
 
 router.delete("/notes/:id", (req, res) => {
-    //creating a variable for the id and converting it to numeric with * 1
-    // const id = req.params.id * 1;
-    res.status(500);
+    console.log(`Deleted NOTES`);
+    if(!req.body.title && !req.body.text){
+        return res.status(400).send("Cannot Find Notes");
+    } 
 });
 
 module.exports = router;
