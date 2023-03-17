@@ -13,7 +13,7 @@ This application was created for the purpose to allow the user to log notes to k
 - [Installation](#installation)
 - [Usage](#usage)
 - [License](#license)
-- [Contribute](#how to contribute)
+- [Contribute](#howtocontribute)
 - [Tests](#tests)
 - [Questions](#questions)
 
