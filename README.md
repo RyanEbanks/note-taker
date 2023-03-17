@@ -3,7 +3,7 @@ This application will use an express.js back end with the purpose to save and re
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-# Deployed Application
+## Deployed Application
 [Click Here!](https://pure-basin-86035.herokuapp.com/)
 
 ## Description
@@ -13,7 +13,7 @@ This application was created for the purpose to allow the user to log notes to k
 - [Installation](#installation)
 - [Usage](#usage)
 - [License](#license)
-- [How-to-Contribute](#how to contribute)
+- [Contribute](#how to contribute)
 - [Tests](#tests)
 - [Questions](#questions)
 
