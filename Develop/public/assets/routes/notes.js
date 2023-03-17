@@ -9,13 +9,6 @@ router.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, '../../notes.html'))
 })
 
-//Testing Custom Middleware to display status
-function statusLogger(req, res, next) {
-    res.status(200);
-}
-
-
-
 module.exports = router;
 
-/* Seperate the html calls from the api calls */                                                                                                                                                                                                        
+                                                                                                                                                                                                    

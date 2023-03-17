@@ -24,15 +24,12 @@ fs.readFile(path.join(__dirname, "../../../db/db.json"), (error, data) => {
 
 //posting, deleting put etc are server calls, you are talking to the server
 // Get route returns info from the json file then we parse it
-//Get Notes, Save Notes and Delete Notes (Line 31-54 in index.js)
-/*Using router.route to call the api/notes incase you want to reference a specific note*/
 router.get("/notes", (req, res) => {
     console.log(`GET NOTES`);
-    console.log(db);
     res.json(noteArray);
-    //We could use res.status(200).json() to add json info
 });
 
+//Creating notes and adding it to the json file
 router.post("/notes", (req, res) => {
     console.log(`POSTED NOTES`);
     if(!req.body.title && !req.body.text){
@@ -63,23 +60,23 @@ router.post("/notes", (req, res) => {
     res.send(noteArray);
 });
 
+//Deleting notes using the id parameter
 router.delete("/notes/:id", (req, res) => {
     console.log(`Deleted NOTES`);
-    // if(!req.body.title && !req.body.text){
-    //     return res.status(400).send("Cannot Find Notes");
-    // } 
-
+   
+    //Using filter to create a new array filled with elements that past the test
     noteArray = noteArray.filter((note) => {
+        //The test is to return all id values that are not equal to the id parameter entered
         return note.id != req.params.id;
     });
 
-     //Re-writing the json file with the new information
+     //Re-writing the json file based on the new noteArray from the filter
      fs.writeFile(path.join(__dirname, "../../../db/db.json"), JSON.stringify(noteArray), (error) => {
         if(error) {
             console.log(error);
         }
         console.log("Successfully removed id!");
-        res.send("Deleted Info from Notes");
+        res.send("Information deleted from notes.");
     });
 });
 
